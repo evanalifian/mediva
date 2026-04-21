@@ -1,3 +1,11 @@
 env
 myenv
-__pychace__
+db.sqlite3
+# ignore semua __pycache__
+__pycache__/
+
+# atau lebih kuat
+**/__pycache__/
+
+# python cache files
+*.pyc
