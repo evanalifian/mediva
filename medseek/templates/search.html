@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mediva | Health Information Retrieval</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); }
+        .gradient-text { background: linear-gradient(90deg, #2563eb, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    </style>
+</head>
+<body class="bg-[#f8fafc] text-slate-900 overflow-x-hidden">
+
+    <header class="pt-6 md:pt-10 pb-8 px-4 md:px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex justify-between items-center mb-8 md:mb-12">
+                <div class="flex items-center space-x-2 md:space-x-3">
+                    <div class="w-8 h-8 md:w-9 md:h-9 bg-blue-600 rounded-lg flex items-center justify-center text-white shadow-md">
+                        <i class="fas fa-notes-medical text-sm"></i>
+                    </div>
+                    <span class="text-lg md:text-xl font-bold tracking-tight">Mediva</span>
+                </div>
+                <div class="flex items-center space-x-3 text-right">
+                    <div class="hidden sm:block">
+                        <p class="text-[8px] uppercase tracking-widest text-slate-400 font-black mb-0.5">UTS Genap 2026</p>
+                        <p class="text-xs font-bold text-slate-700">NIM: 240411100063</p>
+                    </div>
+                    <img src="https://ui-avatars.com/api/?name=63&background=2563eb&color=fff" class="w-8 h-8 rounded-full border border-white shadow-sm">
+                </div>
+            </div>
+
+            <div class="max-w-2xl mx-auto text-center">
+                <h1 class="text-2xl md:text-4xl font-extrabold mb-5 tracking-tight text-slate-900 px-4">
+                    Lihat Informasi <span class="gradient-text">Kesehatan</span>
+                </h1>
+                
+                <div class="glass p-1.5 rounded-xl md:rounded-2xl shadow-lg shadow-blue-100/40 border border-white flex flex-col md:flex-row items-stretch gap-1.5">
+                    <div class="flex-1 flex items-center px-3 py-1.5 md:py-0">
+                        <i class="fas fa-search text-slate-400 text-sm mr-2.5"></i>
+                        <input type="text" class="w-full bg-transparent outline-none border-none focus:ring-0 text-xs md:text-sm text-slate-700 font-medium placeholder:text-slate-400" placeholder="Cari gejala, vaksin...">
+                    </div>
+                    <button class="bg-slate-900 text-white px-5 py-2 md:py-2.5 rounded-lg md:rounded-xl text-xs md:text-sm font-bold hover:bg-blue-600 active:scale-95 transition-all shadow-md">
+                        Analyze
+                    </button>
+                </div>
+                
+                <div class="flex flex-wrap justify-center gap-2 mt-5">
+                    <span class="px-3 py-1 bg-white rounded-full text-[9px] md:text-[10px] font-bold text-slate-400 border border-slate-100 shadow-sm cursor-pointer hover:text-blue-600 transition-colors">#Pencegahan</span>
+                    <span class="px-3 py-1 bg-white rounded-full text-[9px] md:text-[10px] font-bold text-slate-400 border border-slate-100 shadow-sm cursor-pointer hover:text-blue-600 transition-colors">#VaksinFlu</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 md:px-6 pb-20">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+            <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm text-center md:text-left">
+                <p class="text-slate-400 text-[8px] font-black uppercase tracking-widest mb-0.5">Avg Length</p>
+                <p class="text-base md:text-lg font-bold text-slate-800 tracking-tight">7.00</p>
+            </div>
+            <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm text-center md:text-left">
+                <p class="text-slate-400 text-[8px] font-black uppercase tracking-widest mb-0.5">Docs</p>
+                <p class="text-base md:text-lg font-bold text-slate-800 tracking-tight">5</p>
+            </div>
+            <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm text-center md:text-left">
+                <p class="text-slate-400 text-[8px] font-black uppercase tracking-widest mb-0.5">Method</p>
+                <p class="text-base md:text-lg font-bold text-blue-600 tracking-tight uppercase">BM25</p>
+            </div>
+            <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm text-center md:text-left">
+                <p class="text-slate-400 text-[8px] font-black uppercase tracking-widest mb-0.5">Runtime</p>
+                <p class="text-base md:text-lg font-bold text-slate-800 tracking-tight">0.03s</p>
+            </div>
+        </div>
+
+        <div class="space-y-4">
+            <div class="bg-white p-5 md:p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                <div class="flex justify-between items-center mb-3">
+                    <span class="text-[9px] font-black text-blue-600 uppercase tracking-widest">Dokumen D4</span>
+                    <span class="text-[10px] font-bold text-slate-900 bg-emerald-50 text-emerald-600 px-2 py-0.5 rounded">Score: 2.800</span>
+                </div>
+                <h3 class="text-base md:text-lg font-bold text-slate-800 mb-2 leading-tight">Pentingnya Vaksinasi Influenza</h3>
+                <p class="text-xs md:text-sm text-slate-500 leading-relaxed">
+                    Vaksinasi influenza penting untuk <mark class="bg-blue-600 text-white px-1 rounded-sm">mencegah</mark> flu dan <mark class="bg-blue-600 text-white px-1 rounded-sm">demam tinggi</mark>...
+                </p>
+                <div class="mt-4 pt-4 border-t border-slate-50 flex items-center justify-between text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                    <span><i class="far fa-file-alt mr-1.5"></i> 7 Terms</span>
+                    <button class="text-blue-600 flex items-center">Detail <i class="fas fa-chevron-right ml-1"></i></button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-8 text-center border-t border-slate-50">
+        <p class="text-[9px] font-black text-slate-300 uppercase tracking-[0.3em]">Mediva Health Retrieval</p>
+    </footer>
+
+</body>
+</html>
