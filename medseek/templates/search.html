@@ -38,15 +38,15 @@
                     Lihat Informasi <span class="gradient-text">Kesehatan</span>
                 </h1>
                 
-                <div class="glass p-1.5 rounded-xl md:rounded-2xl shadow-lg shadow-blue-100/40 border border-white flex flex-col md:flex-row items-stretch gap-1.5">
+                <form action="/result" method="GET" class="glass p-1.5 rounded-xl md:rounded-2xl shadow-lg shadow-blue-100/40 border border-white flex flex-col md:flex-row items-stretch gap-1.5">
                     <div class="flex-1 flex items-center px-3 py-1.5 md:py-0">
                         <i class="fas fa-search text-slate-400 text-sm mr-2.5"></i>
-                        <input type="text" class="w-full bg-transparent outline-none border-none focus:ring-0 text-xs md:text-sm text-slate-700 font-medium placeholder:text-slate-400" placeholder="Cari gejala, vaksin...">
+                        <input type="text" name="query" class="w-full bg-transparent outline-none border-none focus:ring-0 text-xs md:text-sm text-slate-700 font-medium placeholder:text-slate-400" placeholder="Cari gejala, vaksin...">
                     </div>
                     <button class="bg-slate-900 text-white px-5 py-2 md:py-2.5 rounded-lg md:rounded-xl text-xs md:text-sm font-bold hover:bg-blue-600 active:scale-95 transition-all shadow-md">
                         Analyze
                     </button>
-                </div>
+                </form>
                 
                 <div class="flex flex-wrap justify-center gap-2 mt-5">
                     <span class="px-3 py-1 bg-white rounded-full text-[9px] md:text-[10px] font-bold text-slate-400 border border-slate-100 shadow-sm cursor-pointer hover:text-blue-600 transition-colors">#Pencegahan</span>
@@ -76,21 +76,35 @@
             </div>
         </div>
 
-        <div class="space-y-4">
-            <div class="bg-white p-5 md:p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
-                <div class="flex justify-between items-center mb-3">
-                    <span class="text-[9px] font-black text-blue-600 uppercase tracking-widest">Dokumen D4</span>
-                    <span class="text-[10px] font-bold text-slate-900 bg-emerald-50 text-emerald-600 px-2 py-0.5 rounded">Score: 2.800</span>
+        <div class="space-y-4 mt-6">
+            {% if results %}
+                {% for item in results %}
+                <div class="bg-white p-5 md:p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
+                    
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-[9px] font-black text-blue-600 uppercase tracking-widest">
+                            {{ item.0 }}
+                        </span>
+                        <span class="text-[10px] font-bold text-slate-900 bg-emerald-50 text-emerald-600 px-2 py-0.5 rounded">
+                            Score: {{ item.1 }}
+                        </span>
+                    </div>
+
+                    <h3 class="text-base md:text-lg font-bold text-slate-800 mb-2 leading-tight">
+                        {{ item.0 }}
+                    </h3>
+
+                    <p class="text-xs md:text-sm text-slate-500 leading-relaxed">
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae ab expedita ipsam consectetur facere voluptatem eveniet amet excepturi dolorum nam pariatur iusto a, explicabo necessitatibus fugiat accusantium odio! Illum, corporis.
+                    </p>
+
                 </div>
-                <h3 class="text-base md:text-lg font-bold text-slate-800 mb-2 leading-tight">Pentingnya Vaksinasi Influenza</h3>
-                <p class="text-xs md:text-sm text-slate-500 leading-relaxed">
-                    Vaksinasi influenza penting untuk <mark class="bg-blue-600 text-white px-1 rounded-sm">mencegah</mark> flu dan <mark class="bg-blue-600 text-white px-1 rounded-sm">demam tinggi</mark>...
+                {% endfor %}
+            {% elif query %}
+                <p class="text-center text-red-500 mt-6">
+                    Tidak ada hasil ditemukan 😢
                 </p>
-                <div class="mt-4 pt-4 border-t border-slate-50 flex items-center justify-between text-[10px] font-bold text-slate-400 uppercase tracking-wider">
-                    <span><i class="far fa-file-alt mr-1.5"></i> 7 Terms</span>
-                    <button class="text-blue-600 flex items-center">Detail <i class="fas fa-chevron-right ml-1"></i></button>
-                </div>
-            </div>
+            {% endif %}
         </div>
     </main>
 
