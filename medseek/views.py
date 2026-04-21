@@ -1,9 +1,21 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.template import loader
+import requests
 
 
-# Create your views here.
 def index(request):
-  view = loader.get_template("search.html")
-  return HttpResponse(view.render())
+    return render(request, "search.html")
+
+
+def result(request):
+    query = request.GET.get("query", "")
+    results = []
+
+    if query:
+      url = f"http://127.0.0.1:8080/api/search?q={query}"
+      response = requests.get(url)
+      data = response.json()
+
+      # asumsi data dari API berupa list ranking
+      results = data["result"]  # sesuaikan dengan API kamu
+
+    return render(request, "search.html", {"query": query, "results": results})
