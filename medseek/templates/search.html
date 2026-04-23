@@ -18,12 +18,12 @@
     <header class="pt-6 md:pt-10 pb-8 px-4 md:px-6">
         <div class="max-w-5xl mx-auto">
             <div class="flex justify-between items-center mb-8 md:mb-12">
-                <div class="flex items-center space-x-2 md:space-x-3">
+                <a href="/" class="flex items-center space-x-2 md:space-x-3">
                     <div class="w-8 h-8 md:w-9 md:h-9 bg-blue-600 rounded-lg flex items-center justify-center text-white shadow-md">
                         <i class="fas fa-notes-medical text-sm"></i>
                     </div>
                     <span class="text-lg md:text-xl font-bold tracking-tight">Mediva</span>
-                </div>
+                </a>
                 <div class="flex items-center space-x-3 text-right">
                     <div class="hidden sm:block">
                         <p class="text-[8px] uppercase tracking-widest text-slate-400 font-black mb-0.5">UTS Genap 2026</p>
@@ -83,19 +83,19 @@
                     
                     <div class="flex justify-between items-center mb-3">
                         <span class="text-[9px] font-black text-blue-600 uppercase tracking-widest">
-                            {{ item.0 }}
+                            Document {{ forloop.counter }}
                         </span>
                         <span class="text-[10px] font-bold text-slate-900 bg-emerald-50 text-emerald-600 px-2 py-0.5 rounded">
-                            Score: {{ item.1 }}
+                            Score: {{ item.score }}
                         </span>
                     </div>
 
                     <h3 class="text-base md:text-lg font-bold text-slate-800 mb-2 leading-tight">
-                        {{ item.0 }}
+                        {{ item.document }}
                     </h3>
-
+                    
                     <p class="text-xs md:text-sm text-slate-500 leading-relaxed">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vitae ab expedita ipsam consectetur facere voluptatem eveniet amet excepturi dolorum nam pariatur iusto a, explicabo necessitatibus fugiat accusantium odio! Illum, corporis.
+                        {{ item.body }}
                     </p>
 
                 </div>
