@@ -1,129 +1,20 @@
+import SummaryGroup from "./components/molecules/SummaryGroup";
+import Hero from "./components/organisms/Hero";
+import Navbar from "./components/organisms/Navbar";
+import SearchResults from "./components/organisms/SearchResults";
+
 export default function App() {
   return (
     <>
       <header class="pt-6 md:pt-10 pb-8 px-4 md:px-6">
         <div class="max-w-5xl mx-auto">
-          <div class="flex justify-between items-center mb-8 md:mb-12">
-            <a href="/" class="flex items-center space-x-2 md:space-x-3">
-              <div class="w-8 h-8 md:w-9 md:h-9 bg-blue-600 rounded-lg flex items-center justify-center text-white shadow-md">
-                <i class="fas fa-notes-medical text-sm"></i>
-              </div>
-              <span class="text-lg md:text-xl font-bold tracking-tight">
-                Mediva
-              </span>
-            </a>
-            <div class="flex items-center space-x-3 text-right">
-              <div class="hidden sm:block">
-                <p class="text-[8px] uppercase tracking-widest text-slate-400 font-black mb-0.5">
-                  UTS Genap 2026
-                </p>
-                <p class="text-xs font-bold text-slate-700">
-                  NIM: 240411100063
-                </p>
-              </div>
-              <img
-                src="https://ui-avatars.com/api/?name=63&background=2563eb&color=fff"
-                class="w-8 h-8 rounded-full border border-white shadow-sm"
-              />
-            </div>
-          </div>
-
-          <div class="max-w-2xl mx-auto text-center">
-            <h1 class="text-2xl md:text-4xl font-extrabold mb-5 tracking-tight text-slate-900 px-4">
-              Lihat Informasi <span class="gradient-text">Kesehatan</span>
-            </h1>
-
-            <form
-              action="/result"
-              method="GET"
-              class="glass p-1.5 rounded-xl md:rounded-2xl shadow-lg shadow-blue-100/40 border border-white flex flex-col md:flex-row items-stretch gap-1.5"
-            >
-              <div class="flex-1 flex items-center px-3 py-1.5 md:py-0">
-                <i class="fas fa-search text-slate-400 text-sm mr-2.5"></i>
-                <input
-                  type="text"
-                  name="query"
-                  class="w-full bg-transparent outline-none border-none focus:ring-0 text-xs md:text-sm text-slate-700 font-medium placeholder:text-slate-400"
-                  placeholder="Cari gejala, vaksin..."
-                />
-              </div>
-              <button class="bg-slate-900 text-white px-5 py-2 md:py-2.5 rounded-lg md:rounded-xl text-xs md:text-sm font-bold hover:bg-blue-600 active:scale-95 transition-all shadow-md">
-                Analyze
-              </button>
-            </form>
-
-            <div class="flex flex-wrap justify-center gap-2 mt-5">
-              <span class="px-3 py-1 bg-white rounded-full text-[9px] md:text-[10px] font-bold text-slate-400 border border-slate-100 shadow-sm cursor-pointer hover:text-blue-600 transition-colors">
-                #Pencegahan
-              </span>
-              <span class="px-3 py-1 bg-white rounded-full text-[9px] md:text-[10px] font-bold text-slate-400 border border-slate-100 shadow-sm cursor-pointer hover:text-blue-600 transition-colors">
-                #VaksinFlu
-              </span>
-            </div>
-          </div>
+          <Navbar />
+          <Hero />
         </div>
       </header>
       <main class="max-w-4xl mx-auto px-4 md:px-6 pb-20">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
-          <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm text-center md:text-left">
-            <p class="text-slate-400 text-[8px] font-black uppercase tracking-widest mb-0.5">
-              Avg Length
-            </p>
-            <p class="text-base md:text-lg font-bold text-slate-800 tracking-tight">
-              7.00
-            </p>
-          </div>
-          <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm text-center md:text-left">
-            <p class="text-slate-400 text-[8px] font-black uppercase tracking-widest mb-0.5">
-              Docs
-            </p>
-            <p class="text-base md:text-lg font-bold text-slate-800 tracking-tight">
-              5
-            </p>
-          </div>
-          <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm text-center md:text-left">
-            <p class="text-slate-400 text-[8px] font-black uppercase tracking-widest mb-0.5">
-              Method
-            </p>
-            <p class="text-base md:text-lg font-bold text-blue-600 tracking-tight uppercase">
-              BM25
-            </p>
-          </div>
-          <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm text-center md:text-left">
-            <p class="text-slate-400 text-[8px] font-black uppercase tracking-widest mb-0.5">
-              Runtime
-            </p>
-            <p class="text-base md:text-lg font-bold text-slate-800 tracking-tight">
-              0.03s
-            </p>
-          </div>
-        </div>
-
-        <div class="space-y-4 mt-6">
-          <div class="bg-white p-5 md:p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all">
-            <div class="flex justify-between items-center mb-3">
-              <span class="text-[9px] font-black text-blue-600 uppercase tracking-widest">
-                Document 1
-              </span>
-              <span class="text-[10px] font-bold bg-emerald-50 text-emerald-600 px-2 py-0.5 rounded">
-                Score: 100
-              </span>
-            </div>
-
-            <h3 class="text-base md:text-lg font-bold text-slate-800 mb-2 leading-tight">
-              Judul Dokumen
-            </h3>
-
-            <p class="text-xs md:text-sm text-slate-500 leading-relaxed">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
-              mollitia nesciunt incidunt animi. Vitae quod ad ducimus iusto
-              fugit. Quod?
-            </p>
-          </div>
-          <p class="text-center text-red-500 mt-6">
-            Tidak ada hasil ditemukan 😢
-          </p>
-        </div>
+        <SummaryGroup />
+        <SearchResults />
       </main>
       <footer class="py-8 text-center border-t border-slate-50">
         <p class="text-[9px] font-black text-slate-300 uppercase tracking-[0.3em]">
