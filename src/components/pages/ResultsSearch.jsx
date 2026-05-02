@@ -5,18 +5,27 @@ import { useSearchParams } from "react-router";
 import { useEffect, useState } from "react";
 
 export default function ResultsSearch() {
-  const [searchQuery] = useSearchParams();
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get("q") || "";
   const [results, setResults] = useState({ results: [] });
-  const query = searchQuery.get("q");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     let ignore = false;
 
     async function handleQuery() {
-      const res = await fetchQuery(query);
+      if (!query) return;
 
-      if (!ignore) {
-        setResults(res);
+      setIsLoading(true);
+      try {
+        const res = await fetchQuery(query);
+        if (!ignore) {
+          setResults(res);
+        }
+      } catch (error) {
+        console.error("Fetch error:", error);
+      } finally {
+        if (!ignore) setIsLoading(false);
       }
     }
 
@@ -25,18 +34,28 @@ export default function ResultsSearch() {
     return () => {
       ignore = true;
     };
-  }, []);
+  }, [query]);
 
   return (
     <MainLayout>
       <SummaryGroup />
-      <DocResults results={results.results} />
+      {isLoading ? (
+        <p className='text-center mt-10'>Searching for "{query}"...</p>
+      ) : (
+        <DocResults results={results.results} />
+      )}
     </MainLayout>
   );
 }
 
 function fetchQuery(query) {
-  return fetch(`http://127.0.0.1:8080/api/search?q=${query}`, {
-    method: "GET",
-  }).then((res) => res.json());
+  return fetch(
+    `http://127.0.0.1:8080/api/search?q=${encodeURIComponent(query)}`,
+    {
+      method: "GET",
+    },
+  ).then((res) => {
+    if (!res.ok) throw new Error("Network response was not ok");
+    return res.json();
+  });
 }
