@@ -16,6 +16,7 @@ export default function SearchForm() {
           e.preventDefault();
           setStatus("submitting");
           navigate(`/result?q=${query}`);
+          setStatus("sent");
         }}>
         <div className='flex-1 flex items-center px-3 py-1.5 md:py-0'>
           <i className='fas fa-search text-slate-400 text-sm mr-2.5'></i>
