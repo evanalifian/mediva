@@ -1,7 +1,6 @@
 import DocCard from "../atoms/DocCard";
 
 export default function DocResults({ results }) {
-  // console.log(results)
   return (
     <div className='space-y-4 mt-6'>
       {results ? (
