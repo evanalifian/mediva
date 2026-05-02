@@ -1,11 +1,13 @@
 import MainLayout from "../templates/MainLayout";
 import SummaryGroup from "../molecules/SummaryGroup";
 import DocResults from "../molecules/DocResults";
-import { useSearchParams } from "react-router";
+import { useSearchParams } from "react-router"; // Pastikan package 'react-router-dom' jika di web
 import { useEffect, useState } from "react";
+import LoadingSpinner from "../atoms/LoadingSpinner";
 
 export default function ResultsSearch() {
   const [searchParams] = useSearchParams();
+  // Ambil query langsung dari URL agar selalu sinkron
   const query = searchParams.get("q") || "";
   const [results, setResults] = useState({ results: [] });
   const [isLoading, setIsLoading] = useState(false);
@@ -14,7 +16,7 @@ export default function ResultsSearch() {
     let ignore = false;
 
     async function handleQuery() {
-      if (!query) return;
+      if (!query) return; // Jangan fetch jika tidak ada query
 
       setIsLoading(true);
       try {
@@ -34,13 +36,13 @@ export default function ResultsSearch() {
     return () => {
       ignore = true;
     };
-  }, [query]);
+  }, [query]); // <--- Dependency Array: Fetch ulang setiap kali 'query' di URL berubah
 
   return (
     <MainLayout>
       <SummaryGroup />
       {isLoading ? (
-        <p className='text-center mt-10'>Searching for "{query}"...</p>
+        <LoadingSpinner />
       ) : (
         <DocResults results={results.results} />
       )}
