@@ -1,26 +1,26 @@
 import MainLayout from "../templates/MainLayout";
 import SummaryGroup from "../molecules/SummaryGroup";
-import SearchResults from "../organisms/SearchResults";
+import DocResults from "../molecules/DocResults";
 import { useSearchParams } from "react-router";
 import { useEffect, useState } from "react";
 
 export default function ResultsSearch() {
   const [searchQuery] = useSearchParams();
-  const [results, setResults] = useState();
+  const [results, setResults] = useState({ results: [] });
   const query = searchQuery.get("q");
 
   useEffect(() => {
     let ignore = false;
-    
+
     async function handleQuery() {
-      const res = await fetchQuery(query)
+      const res = await fetchQuery(query);
 
       if (!ignore) {
-        setResults(res)
+        setResults(res);
       }
     }
 
-    handleQuery()
+    handleQuery();
 
     return () => {
       ignore = true;
@@ -30,7 +30,7 @@ export default function ResultsSearch() {
   return (
     <MainLayout>
       <SummaryGroup />
-      <SearchResults />
+      <DocResults results={results.results} />
     </MainLayout>
   );
 }
